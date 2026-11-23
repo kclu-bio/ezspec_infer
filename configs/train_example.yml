@@ -1,0 +1,117 @@
+# Example training config (portable paths for a public repo layout).
+#
+# All paths under ``data:`` and top-level ``log_dir`` / ``resume`` are relative to:
+#   <repo_root> / <data_root>
+# where ``repo_root`` defaults to the shell's current working directory.
+#
+# Typical run from the repository root:
+#   python src/main_training.py --config configs/train_example.yml
+#
+# To point at another checkout location:
+#   python src/main_training.py --config configs/train_example.yml --repo_root /path/to/ezspec
+
+data_root: data_dir
+
+num_cpus: 4
+num_gpus: 1
+log_dir: train/inputs/processed_data/logs
+max_epochs: 500
+resume: null
+log: True
+seed: 9
+n_runs: 1
+
+data:
+  tag: complete-full-random-all-0-complex-ft-cyp
+  representer: structure_sequence
+  log_dir: train/inputs/processed_data/logs
+  train_data_path:
+    - train/inputs/processed_data/train.csv
+  val_data_path:
+    - train/inputs/processed_data/val.csv
+  test_data_path:
+    - train/inputs/processed_data/val.csv
+  enzyme_lmdb_path:
+    - train/inputs/processed_data/enzyme_features.lmdb
+  reaction_lmdb_path:
+    - train/inputs/processed_data/reaction_features.lmdb
+  grover_path:
+    - train/inputs/processed_data/grover_fingerprint.lmdb
+  morgan_path:
+    - train/inputs/processed_data/morgan_fingerprint.npy
+  structure_processed_path:
+    - train/inputs/processed_data/structure_features.lmdb
+  sequence_processed_path:
+    - train/inputs/processed_data/str_features.lmdb
+  high_quality_id_path:
+    - train/inputs/processed_data/high_quality_id.txt
+  pdb_dir:
+    - train/inputs/processed_data/Structure/str_tmp_data/pocket
+  ligand_dir:
+    - train/inputs/processed_data/Structure/str_tmp_data/ligand
+  full_data:
+    - True
+  fake_sequence_ratio: 0
+  skip_timeout: null
+
+  sample_weight:
+    - 1.0
+    - 1.0
+
+  batch_size: 8
+
+  max_substrate_length: 280
+  max_enzyme_length: 1450
+
+  features:
+    - 'morgan'
+    - 1024
+    - 'grover_mean'
+    - 4885
+
+  atom_features:
+    - 'grover'
+    - 2400
+
+transform:
+  dist_noise: True
+  cutoff: 10
+  num_r_gaussian: 32
+  k: 48
+
+model:
+  name: 'structure_sequence'
+  use_gnn: True
+  hidden_dim: 128
+  feature_norm: False
+
+  header:
+    act_fn: 'relu'
+    norm: True
+    num_layers: 3
+
+  graph:
+    name: egnn
+    hidden_dim: 128
+    act_fn: relu
+    num_layers: 3
+    attention: True
+    residual: True
+    norm: layer
+    mode: complex
+
+  cross_attention:
+    n_head: 8
+    dropout: 0.9
+
+training:
+  gradient_clip_val: 8
+  optimizer: 'adamW'
+  warmup_epochs: 8
+  lr: 3.0e-04
+  weight_decay: 0
+  min_lr: 5.0e-06
+  sched_factor: 0.5
+  sched_patience: 10
+  val_frequency: 1
+  accumulate_grad_batches: 2

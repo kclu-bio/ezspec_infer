@@ -1,0 +1,62 @@
+# Main inference dependencies from the working environment.
+# Target: Linux x86_64, Python 3.10, NVIDIA CUDA 12.8 wheels, glibc >= 2.28.
+# Create with: conda env create -f ezspec.minimal.yaml
+# Boltz and its gemmi installation belong in a separate Python 3.12 environment.
+# A fresh installation of this reduced manifest has not yet been validated.
+name: ezspec
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.10
+  - pip>=23.3
+  - setuptools=68.2.2
+  - wheel
+  - libstdcxx-ng>=13
+  - make
+  - zstd
+  - pip:
+      - "--extra-index-url https://download.pytorch.org/whl/cu128"
+      - "--find-links https://data.pyg.org/whl/torch-2.8.0+cu128.html"
+      - "--only-binary=pyg-lib,torch-scatter,torch-sparse,torch-cluster,torch-spline-conv"
+      # Keep PyTorch and all compiled PyG extensions on the same CUDA/ABI build.
+      - torch==2.8.0+cu128
+      - torchvision==0.23.0+cu128
+      - torchaudio==2.8.0+cu128
+      - torch-geometric==2.8.0.post1
+      - pyg-lib==0.6.0+pt28cu128
+      - torch-scatter==2.1.2+pt28cu128
+      - torch-sparse==0.6.18+pt28cu128
+      - torch-cluster==1.6.3+pt28cu128
+      - torch-spline-conv==1.2.2+pt28cu128
+      - pytorch-lightning==2.4.0
+      - torchmetrics==1.2.0
+      - lightning-utilities==0.15.3
+      # Numerical and chemical/protein features.
+      - numpy==1.26.3
+      - pandas==2.3.3
+      - scipy==1.13.1
+      - scikit-learn==1.3.1
+      - rdkit==2026.3.4
+      - biopython==1.84
+      - fair-esm==2.0.0
+      - descriptastorus==2.6.1
+      - pandas-flavor==0.6.0
+      - lmdb==1.4.1
+      - cython==3.0.4
+      - transformers==4.35.2
+      - tokenizers==0.15.0
+      - huggingface-hub==0.19.4
+      # Workflow, configuration, and logging; retain older Ray compatibility.
+      - ray==2.7.1
+      - pyarrow==13.0.0
+      - pydantic==1.10.13
+      - protobuf==4.23.4
+      - fsspec==2023.10.0
+      - easydict==1.10
+      - pyyaml==6.0.2
+      - requests==2.32.3
+      - tqdm==4.66.1
+      - warmup-scheduler==0.3
+      - tensorboard==2.15.0
+      - matplotlib==3.8.0

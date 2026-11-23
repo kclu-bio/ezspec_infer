@@ -1,0 +1,180 @@
+num_cpus: 144
+num_gpus: 4
+root_dir: /projects/bbto/suyufeng/enzyme_specificity
+log: True
+seed: 3407
+n_runs: 1
+
+data:
+  tag: complete-full-random-all-0-complex
+  representer: structure_sequence
+
+  train_data_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/final_data/random_split/training_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/random_split/training_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/random_split/training_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/random_split/training_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/random_split/training_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/random_split/training_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/random_split/training_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/random_split/training_datas_0.csv
+  val_data_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/final_data/random_split/val_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/random_split/val_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/random_split/val_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/random_split/val_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/random_split/val_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/random_split/val_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/random_split/val_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/random_split/val_datas_0.csv
+  test_data_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/final_data/random_split/testing_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/random_split/testing_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/random_split/testing_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/random_split/testing_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/random_split/testing_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/random_split/testing_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/random_split/testing_datas_0.csv
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/random_split/testing_datas_0.csv
+
+  enzyme_lmdb_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/enzyme_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/enzyme_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/enzyme_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/enzyme_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/enzyme_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/enzyme_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/enzyme_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/enzyme_features.lmdb
+
+  reaction_lmdb_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/reaction_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/reaction_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/reaction_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/reaction_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/reaction_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/reaction_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/reaction_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/reaction_features.lmdb
+
+  grover_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/grover_fingerprint.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/grover_fingerprint.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/grover_fingerprint.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/grover_fingerprint.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/grover_fingerprint.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/grover_fingerprint.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/grover_fingerprint.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/grover_fingerprint.lmdb
+
+  morgan_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/morgan_fingerprint.npy
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/morgan_fingerprint.npy
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/morgan_fingerprint.npy
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/morgan_fingerprint.npy
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/morgan_fingerprint.npy
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/morgan_fingerprint.npy
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/morgan_fingerprint.npy
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/morgan_fingerprint.npy
+  # structure
+  structure_processed_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/structure_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/structure/af2/structure_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/structure/af2/structure_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/structure/af2/structure_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/structure/af2/structure_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/structure/af2/structure_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/structure/af2/structure_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/structure/af2/structure_features.lmdb
+
+  sequence_processed_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/sequence_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Duf/structure/af2/str_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Esterase/structure/af2/str_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Gt_acceptor/structure/af2/str_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Nitrilase/structure/af2/str_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Phosphatase/structure/af2/str_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/Thiolase/structure/af2/str_features.lmdb
+    - /projects/bbto/suyufeng/enzyme_specificity/data/small_family/halogenase/structure/af2/str_features.lmdb
+
+  high_quality_id_path:
+    - /projects/bbto/suyufeng/enzyme_specificity/data/brenda/high_quality_str.txt
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+    - None
+
+
+  pdb_dir: /scratch/bbto/suyufeng/data/pocket
+  ligand_dir: /scratch/bbto/suyufeng/data/ligand
+  full_data: False
+
+  fake_sequence_ratio: 0
+
+  sample_weight:
+    - 1.0
+    - 1.0
+
+  batch_size: 16
+
+  max_substrate_length: 280
+  max_enzyme_length: 1450
+
+  features:
+    - 'morgan'
+    - 1024
+    - 'grover_mean'
+    - 4885
+
+
+  atom_features:
+    - 'grover'
+    - 2400
+
+
+transform:
+  dist_noise: True
+  cutoff: 10
+  num_r_gaussian: 32
+  k: 48
+
+model:
+  name: 'structure_sequence'
+  use_gnn: True
+  hidden_dim: 128
+  feature_norm: False
+
+  header:
+    act_fn: 'relu'
+    norm: True
+    num_layers: 3
+
+  graph:
+    name: egnn
+    hidden_dim: 128
+    act_fn: relu
+    num_layers: 3
+    attention: True
+    residual: True
+    norm: layer
+    mode: complex
+
+  cross_attention:
+    n_head: 8
+    dropout: 0.9
+
+
+training:
+  gradient_clip_val: 8
+  optimizer: 'adamW'
+  warmup_epochs: 8
+  lr: 3.0e-04
+  weight_decay: 0
+  min_lr: 5.0e-06
+  sched_factor: 0.5
+  sched_patience: 10
+  val_frequency: 1
+  accumulate_grad_batches: 2
